@@ -1,0 +1,56 @@
+
+extfn sqrt(n: double) -> double
+extfn log(n: double) -> double
+
+fn divisorSum(n: int) -> int 
+{
+	if n <= 0 return 0
+
+	var limit: double = sqrt(double`n)
+	var sum: int = 0
+
+	for var i: int = 1; double`i <= limit; i += 1 {
+		if n % i == 0 {
+			sum += i
+			if double`i != limit {
+				sum += (n / i)
+			}
+		}
+
+	}
+
+	return sum
+}
+
+fn witnessValue(n: int) -> double {
+    var denominator: double = double`n * log(log(double`n))
+
+    var divisorSum: double = double`divisorSum(n)
+
+    return divisorSum/denominator
+}
+
+fn bestWitness(maxRange: int, searchStart: int) -> int
+{
+    var maxVal: double = 0.0
+    var maxIndex: int = searchStart
+
+    for var i: int = searchStart; i < maxRange; i += 1 
+    {
+        var currentValue: double = witnessValue(i)
+
+        if currentValue > maxVal {
+            maxIndex = i
+            maxVal = currentValue
+        }
+    }
+
+    return maxIndex
+}
+
+fn main() -> int
+{
+    println("The best witness is:", bestWitness(10000000, 5041))
+
+    return 0
+}
