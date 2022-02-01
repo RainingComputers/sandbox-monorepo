@@ -1,8 +1,7 @@
 # Use root/example as user/password credentials
-version: '3.1'
+version: "3.1"
 
 services:
-
   mongo:
     image: mongo
     restart: always
@@ -11,3 +10,13 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
+    healthcheck:
+      test: |
+        echo 'db.runCommand({serverStatus:1}).ok' | mongo admin \
+          --username $MONGO_INITDB_ROOT_USERNAME \
+          --password $MONGO_INITDB_ROOT_PASSWORD \
+          --quiet | grep 1
+      interval: 10s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
