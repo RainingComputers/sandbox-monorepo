@@ -31,5 +31,5 @@ jobs:
         run: go test ./...
         working-directory: bloggy
       - name: Stop test services
-        run: docker-compose -f test-services.yml down
+        run: docker-compose -f test_services.yml down
         working-directory: bloggy
