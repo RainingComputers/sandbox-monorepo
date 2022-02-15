@@ -1,14 +1,5 @@
 # Install compiler 
-```
-sudo apt install llvm-12 llvm-12-dev
-git clone git@github.com:RainingComputers/ShnooTalk.git
-cd ShnooTalk
-make build
-sudo make install -j 8
-sudo codesign -s - /usr/local/bin/shtkc 
-cd ..
-rm -rf ShnooTalk
-```
+https://github.com/RainingComputers/shnootalk
 
 # Compile
 ```
@@ -22,6 +13,7 @@ time ./search
 
 # Result
 ```
+time ./search
 The best witness is: 10080
-./search  44.86s user 0.20s system 98% cpu 45.552 total
+       14.16 real        13.62 user         0.02 sys
 ```

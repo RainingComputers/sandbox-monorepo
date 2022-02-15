@@ -53,7 +53,7 @@ func FindHandler(s storage.Storage) gin.HandlerFunc {
 			return
 		}
 
-		c.JSON(http.StatusOK, foundPost)
+		h
 	}
 }
 
